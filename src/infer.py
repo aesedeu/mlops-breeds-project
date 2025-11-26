@@ -43,7 +43,13 @@ def main(config: DictConfig):
         .to(config.device)
     )
 
-    model = CNN(n_classes=config.train_config.n_classes)
+    model = CNN(
+        n_classes=config.train_config.n_classes,
+        hidden_size=config.train_config.hidden_size,
+        pooling_kernel_size=config.train_config.pooling_kernel_size,
+        conv_kernel_size=config.train_config.conv_kernel_size,
+        num_blocks=config.train_config.num_blocks,
+    )
     module = CustomTrainer.load_from_checkpoint(
         f"{config.model_save_path}/{config.test_config.checkpoint}",
         n_classes=config.train_config.n_classes,
