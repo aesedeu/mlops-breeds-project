@@ -186,3 +186,5 @@ logs
 models/*
 !.gitkeep
 !american_bulldog_120.jpg
+*.onnx
+*.onnx.data
