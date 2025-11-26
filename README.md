@@ -103,6 +103,11 @@ uv run main.py convert --checkpoint=breeds_model_val_acc=0.30.ckpt
 uv run main.py convert --checkpoint=breeds_model_val_acc=0.30.ckpt --savepath=triton/models/image_classifier/1/model.onnx
 ```
 
+Не забудьте перезапустить тритон, чтобы модель перезагрузилась
+```bash
+docker restart triton
+```
+
 Запуск классификации нового изображения через triton:
 ```bash
 uv run main.py infer-triton --image-path=american_bulldog_120.jpg

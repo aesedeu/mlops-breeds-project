@@ -5,7 +5,7 @@ import torch
 from PIL import Image
 import torchvision as tv
 from model import CNN
-from trainer import BreedsTrainer
+from trainer import CustomTrainer
 
 
 @hydra.main(version_base=None, config_path="..", config_name="config")
@@ -29,10 +29,15 @@ def main(config: DictConfig):
         .unsqueeze(0)
         .to(config.device)
     )
-    model = CNN(n_classes=config.train_config.n_classes)
-    module = BreedsTrainer.load_from_checkpoint(
-        f"{config.model_save_path}/{config.test_config.checkpoint}",
+    model = CNN(
         n_classes=config.train_config.n_classes,
+        hidden_size=config.train_config.hidden_size,
+        pooling_kernel_size=config.train_config.pooling_kernel_size,
+        conv_kernel_size=config.train_config.conv_kernel_size,
+        num_blocks=config.train_config.num_blocks,
+    )
+    module = CustomTrainer.load_from_checkpoint(
+        f"{config.model_save_path}/{config.test_config.checkpoint}",
         model=model,
     ).to(config.device)
 

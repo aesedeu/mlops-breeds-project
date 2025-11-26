@@ -13,24 +13,11 @@ from omegaconf import DictConfig
 @hydra.main(version_base=None, config_path="..", config_name="config")
 def main(config: DictConfig):
     image_path = config.infer_config.file_path
-    model_name = config.triton_config.model_name  # например, "image_classifier"
-    triton_url = config.triton_config.url  # например, "http://localhost:8000/v2/models"
+    model_name = config.triton_config.model_name
+    triton_url = config.triton_config.url
 
     # --- 1. Препроцессинг ---
     image = Image.open(image_path).convert("RGB")
-    # transform = T.Compose(
-    #     [
-    #         T.Resize(
-    #             (
-    #                 config.train_config.data_config.image_height,
-    #                 config.train_config.data_config.image_width,
-    #             )
-    #         ),
-    #         T.ToTensor(),
-    #         T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    #     ]
-    # )
-    # input_tensor = transform(image).unsqueeze(0).numpy().astype(np.float32)
     input_tensor = (
         tv.transforms.Compose(
             [
