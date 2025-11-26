@@ -1,0 +1,46 @@
+expname: breeds-pytorch-research
+device: mps
+model_name: breeds_model
+
+hydra:
+  run:
+    dir: logs/hydra/${expname}/${now:%Y-%m-%d-%H-%M-%S}
+
+model_save_path: ./models
+
+train_config:
+  data_config:
+    train_data_path: data/train_data
+    test_data_path: data/test_data
+    val_data_path: data/val_data
+    image_height: 224
+    image_width: 224
+    batch_size: 32
+  learning_rate: 2e-4
+  n_classes: 35
+  hidden_size: 64
+  pooling_kernel_size: 2
+  conv_kernel_size: 3
+  num_blocks: 6
+  num_epochs: 1
+  save_top_k: 1
+  training_monitoring: val_acc
+  training_monitoring_mode: max
+  mlflow_logging:
+    experiment_name: cat-dogs-classification
+    run_name: initial_train
+    mlflow_save_dir: "."
+    tracking_uri: http://localhost:5050
+
+test_config:
+  checkpoint: breeds_model.ckpt
+
+infer_config:
+  file_path: data/inf_data/infer_image.jpg
+
+convert:
+  savepath: 0
+
+triton_config:
+  url: "http://localhost:8000/v2/models"
+  model_name: "image_classifier"

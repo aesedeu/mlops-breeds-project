@@ -1,0 +1,82 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: debug-statements
+
+  - repo: https://github.com/asottile/pyupgrade # апгрейд синтаксиса
+    rev: v3.3.1
+    hooks:
+      - id: pyupgrade
+        args: [--py311-plus]
+
+  - repo: https://github.com/PyCQA/isort # сортировка импортов
+    rev: 5.12.0
+    hooks:
+      - id: isort
+
+  - repo: https://github.com/psf/black # форматирование кода под PEP8
+    rev: 23.1.0
+    hooks:
+      - id: black
+        exclude: ^.*\b(migrations)\b.*$
+
+  # - repo: https://github.com/nbQA-dev/nbQA
+  #   rev: 1.9.1
+  #   hooks:
+  #     - id: nbqa-black
+  #       additional_dependencies: [jupytext]  # optional, only if you're using Jupytext
+  #       args: ["--nbqa-mutate", "--nbqa-shell"]
+  #     - id: nbqa-pyupgrade
+  #       args: ["--py311-plus"]
+  #     - id: nbqa-isort
+  #       args: ["--float-to-top"]
+
+  -   repo: https://github.com/PyCQA/autoflake # убирает неиспользуемые импорты
+      rev: v2.0.1
+      hooks:
+      -   id: autoflake
+
+  -   repo: https://github.com/PyCQA/flake8 # проверка код-стайла и выдает ошибки
+      rev: 7.0.0
+      hooks:
+      -   id: flake8
+
+  # -   repo: local # еще одна проверка и также выдает ошибки
+  #     hooks:
+  #       - id: pylint
+  #         name: pylint
+  #         entry: pylint
+  #         language: system
+  #         types: [python]
+  #         require_serial: true
+  #         args:
+  #           [
+  #             "-rn", # Only display messages
+  #             # "-sn", # Don't display the score
+  #           ]
+
+  - repo:  https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.21.0
+    hooks:
+      - id: check-github-workflows
+      - id: check-dependabot
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-use-type-annotations
+      - id: python-check-blanket-noqa
+
+  # - repo: https://github.com/sqlfluff/sqlfluff # SQL
+  #   rev: 3.2.5
+  #   hooks:
+  #     - id: sqlfluff-lint
+  #       args: ["--dialect", "oracle", "--write-output", "y"] # set the dialect
+  #     # - id: sqlfluff-fix
+  #     #   args: ["--dialect", "oracle"] # set the dialect

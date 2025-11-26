@@ -1,0 +1,14 @@
+[flake8]
+ignore =
+    # imported but unused
+    F401,
+    # line break after binary operator
+    W504,
+    # line too long
+    E501,
+    E203,
+    F403,
+    # line break before binary operator
+    W503,
+    # local variable 'XXX' is assigned to but never used
+    F841

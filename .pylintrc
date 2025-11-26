@@ -1,0 +1,27 @@
+[MASTER]
+ignore=.venv
+init-hook='import sys; sys.path.append(".venv/lib/python3.11/site-packages")'
+
+[TYPECHECK]
+ignored-modules=
+    pydantic,
+    airflow,
+    libs
+
+[MESSAGES CONTROL]
+disable=
+    C0103, # filename: invalid-name
+    W1203, # logging-fstring-interpolation
+    C0301,
+    C0114, # docstring
+    C0115, # docstring
+    C0415, # libs: import-outside-toplevel
+    C0116,
+    R0903,
+    R1705, # no-else-return
+    W0718,
+    W0104, # airflow: Statement seems to have no effect (pointless-statement)
+    C0411, # wrong-import-order
+    W0511, # TODO
+    R0914, # local vars
+    R0801, # similar lines
