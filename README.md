@@ -80,6 +80,11 @@ docker compose up -d
   - адрес mlflow
 -
 
+Активируйте виртуальное окружение
+```bash
+source .venv/bin/activate
+```
+
 Запуск обучения модели (train):
 ```bash
 uv run main.py train
