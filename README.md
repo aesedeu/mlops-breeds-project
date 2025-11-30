@@ -46,7 +46,7 @@
 ├── pyproject.toml            # Настройки Python-пакета, зависимости, конфигурация сборки
 ├── requirements.txt          # Список Python-зависимостей для проекта
 ├── sandbox.ipynb             # Jupyter Notebook для экспериментов, отладки, тестирования модели
-├── src
+├── animal_breeds_classifier
 │   ├── infer.py              # Скрипт для инференса модели на изображениях
 │   ├── infer_triton.py       # Скрипт для инференса через Triton Inference Server
 │   ├── model.py              # Определение архитектуры CNN и других моделей
