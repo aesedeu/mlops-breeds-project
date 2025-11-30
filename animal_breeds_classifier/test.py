@@ -1,7 +1,6 @@
 import os
 
 import hydra
-import mlflow
 import pytorch_lightning as pl
 import torch.nn as nn
 import torch.optim as optim

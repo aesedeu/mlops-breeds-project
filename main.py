@@ -67,7 +67,7 @@ def main():
             [
                 "uv",
                 "run",
-                "src/train.py",
+                "animal_breeds_classifier/train.py",
             ]
         )
 
@@ -76,7 +76,7 @@ def main():
             [
                 "uv",
                 "run",
-                "src/test.py",
+                "animal_breeds_classifier/test.py",
                 f"test_config.checkpoint='{args.checkpoint}'",
             ]
         )
@@ -86,7 +86,7 @@ def main():
             [
                 "uv",
                 "run",
-                "src/infer.py",
+                "animal_breeds_classifier/infer.py",
                 f"test_config.checkpoint='{args.checkpoint}'",
                 f"infer_config.file_path={args.image_path}",
             ]
@@ -96,7 +96,7 @@ def main():
             [
                 "uv",
                 "run",
-                "src/pt2onnx.py",
+                "animal_breeds_classifier/pt2onnx.py",
                 f"test_config.checkpoint='{args.checkpoint}'",
                 f"convert.savepath={args.savepath}",
             ]
@@ -106,7 +106,7 @@ def main():
             [
                 "uv",
                 "run",
-                "src/infer_triton.py",
+                "animal_breeds_classifier/infer_triton.py",
                 f"infer_config.file_path={args.image_path}",
             ]
         )
