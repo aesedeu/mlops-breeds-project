@@ -1,9 +1,8 @@
-import torch.nn as nn
 import torch
+import torch.nn as nn
 
 
 class CNN(nn.Module):
-
     def __init__(
         self,
         n_classes,

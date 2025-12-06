@@ -1,10 +1,9 @@
 import hydra
-from omegaconf import DictConfig
-import argparse
 import torch
-from PIL import Image
 import torchvision as tv
 from model import CNN
+from omegaconf import DictConfig
+from PIL import Image
 from trainer import CustomTrainer
 
 
@@ -60,6 +59,7 @@ def main(config: DictConfig):
         )
 
     print(f"Модель успешно экспортирована в файл: {config.convert.savepath}")
+
 
 if __name__ == "__main__":
     main()

@@ -1,13 +1,14 @@
-import os
-import torchvision as tv
 import json
-import torch
+import os
+
+import hydra
 import numpy as np
 import requests
+import torch
+import torchvision as tv
 import torchvision.transforms as T
-from PIL import Image
-import hydra
 from omegaconf import DictConfig
+from PIL import Image
 
 
 @hydra.main(version_base=None, config_path="..", config_name="config")

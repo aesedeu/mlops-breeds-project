@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 import hydra
 import mlflow
@@ -9,7 +10,6 @@ from model import CNN
 from omegaconf import DictConfig
 from torch.utils.data import DataLoader
 from trainer import CustomTrainer
-import subprocess
 
 
 @hydra.main(version_base=None, config_path="..", config_name="config")
@@ -95,10 +95,7 @@ def main(config: DictConfig):
         log_every_n_steps=1,
         accelerator="auto",
         devices="auto",
-        logger=[
-            logger,
-            tb_logger
-        ],
+        logger=[logger, tb_logger],
         callbacks=[checkpoint_callback],
         default_root_dir="logs",
     )
